@@ -1,0 +1,5 @@
+exclude:
+- /watson_pi.php
+component_depth: 1
+languages:
+- php

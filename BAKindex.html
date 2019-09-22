@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vagas @ DHL</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="style.css" />
+	
+	  <script type="text/javascript">
+        
+    
+           
+              
+
+
+             function characteresAndWordsCounter(obj) {
+                 var strText = obj.form.txtarea.value;
+                 if (strText.length > 0) {
+                     strText = strText.replace(/(\r\n|\n|\r)/g," ").trim();
+                     var strWords = strText.split(/\s+/g);
+                 
+                     var chkSpace = obj.form.chkSpace;             
+                     if (chkSpace.checked == true)
+                         strText = strText.replace(/\s*/g, "");
+                         
+                     var objLabelResult = document.getElementById('result');
+                     objLabelResult.innerHTML = 'O seu texto possui ' + strWords.length + ' palavra(s).';
+                     
+                     if (strWords.length < 100){
+                         objLabelResult.innerHTML = 'Você digitou ' + strWords.length + ' palavra(s). É preciso digitar no mínimo 100 palavras'
+      
+                        setTimeout(characteresAndWordsCounter, 500);
+                        
+                        return false;
+                     }
+                     
+                  
+                     
+                     
+                  
+                }
+                else
+                    alert('Por favor insira um texto para continuar!');                
+             }
+             
+         
+             
+        </script>
+        
+</head>
+<body>
+<table>
+		<tr>
+			<td style='width: 30%;'><img class = 'newappIcon' src='images/newapp-icon.png'>
+			</td>
+			<td>
+				<h1 id = "message"> Processo Seletivo DHL</h1>
+				
+				<p class='description'></p>Digite <span class="blue">seu e-mail</span>:
+				<p class='description'>
+				<form method="post" action="index.php"><textarea style="width: 300px; height: 20px;" name="email"></textarea>
+				
+				<p class='description'></p>Digite <span class="blue"> seu nome</span>:
+				<p>
+				<form method="post" action="index.php"><textarea style="width: 300px; height: 20px;" name="nome"></textarea>
+				
+				<p class='description'></p>Digite <span class="blue"> seu sobrenome</span>:
+				<p>
+				<form method="post" action="index.php"><textarea style="width: 300px; height: 20px;" name="sobrenome"></textarea>
+				
+				<p class='description'></p>Digite <span class="blue">a vaga pretendida</span>:
+				<p>
+				<form method="post" action="index.php"><textarea style="width: 300px; height: 20px;" name="vaga"></textarea><br>
+					
+				<p class='description'></p>Digite <span class="blue">a sua carta</span> com no mínimo 100 palavras:
+				<p>
+				   
+					<form method="post" action="index.php" oninput="return characteresAndWordsCounter(this);"><textarea oninput="return characteresAndWordsCounter(this);" style="width: 650px; height: 200px;" name="txtarea"></textarea>
+					 <p>
+				
+              <p>
+                <input id="chkSpace" name="chkSpace" type="checkbox" />
+                <label for="chkSpace"></label>
+            </p>
+            <p><label id="result"></label></p>
+            <p>
+				    <input type="submit" value="Enviar" onclick="return characteresAndWordsCounter(this);"/>
+				    
+				</p>				
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

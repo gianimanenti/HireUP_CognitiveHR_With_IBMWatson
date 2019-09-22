@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>vagas @ DHL</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+	  <script type="text/javascript">
+     
+             function characteresAndWordsCounter(obj) {
+                 var strText = obj.form.txtarea.value;
+                 if (strText.length > 0) {
+                     strText = strText.replace(/(\r\n|\n|\r)/g," ").trim();
+                     var strWords = strText.split(/\s+/g);
+                 
+                     var chkSpace = obj.form.chkSpace;             
+                     if (chkSpace.checked == true)
+                         strText = strText.replace(/\s*/g, "");
+                         
+                     var objLabelResult = document.getElementById('result');
+                     objLabelResult.innerHTML = 'O seu texto possui ' + strWords.length + ' palavra(s).';
+                     
+                     if (strWords.length < 100){
+                         objLabelResult.innerHTML = 'Você digitou ' + strWords.length + ' palavra(s). É preciso digitar no mínimo 100 palavras'
+      
+                        setTimeout(characteresAndWordsCounter, 500);
+                        
+                        return false;
+                     }
+                     
+                  
+                     
+                     
+                  
+                }
+                else
+                    alert('Por favor insira um texto para continuar!');                
+             }
+             
+         
+             
+        </script>
+  
+</head>
+
+<body>
+
+  <!-- multistep form -->
+    <form method="post" action="index.php" id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Dados pessoais</li>
+    <li>Vaga Pretendida</li>
+    <li>Carta</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Processo Seletivo DHL</h2>
+    <h3 class="fs-subtitle">Digite seus dados pessoais</h3>
+    
+    <input type="text" name="email" placeholder="E-mail" />
+ <input type="nome" name="nome" placeholder="Nome" />
+  <input type="sobrenome" name="sobrenome" placeholder="Sobrenome" />
+    <input type="button" name="next" class="next action-button" value="Próximo" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Processo Seletivo DHL</h2>
+    <h3 class="fs-subtitle">Digite sua vaga pretendida</h3>
+   <input type="text" name="vaga"  placeholder="Vaga Pretendida" />
+    <input type="button" name="previous" class="previous action-button" value="Anterior" />
+    <input type="button" name="next" class="next action-button" value="Próximo" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Processo Seletivo DHL</h2>
+    <h3 class="fs-subtitle"></h3>
+   <textarea name="txtarea" class="carta" width = "800" height= "800" placeholder="Digite a sua carta com no mínimo 100 palavras:" type = "carta" oninput="return characteresAndWordsCounter(this);"></textarea>
+	  
+	   <p>
+                <input id="chkSpace" name="chkSpace" type="checkbox" />
+                <label for="chkSpace"></label>
+            </p>
+            <p><label id="result"></label></p>
+            <p>
+    <input type="submit" value="Enviar" onclick="return characteresAndWordsCounter(this);" />
+  </fieldset>
+</form>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
